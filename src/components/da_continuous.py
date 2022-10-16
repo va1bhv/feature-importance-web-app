@@ -18,15 +18,6 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, sp
     x = pd.get_dummies(df[x_vars], columns=x_to_encode, drop_first=True)
     y = pd.get_dummies(df[y_vars], drop_first=True) if not is_numeric_dtype(df[y_vars]) else df[y_vars]
 
-    title = html.Div(children=[
-        html.H3(f'Continuous model'),
-        html.Div(children=[f'{y_vars} ~ f({", ".join(x_vars)})']),
-    ])
-    print(split_ratio)
     return html.Div(className='app-div',
                     children=[
-                        title,
-                        html.Hr(),
-                        # result_tabs,
-
                     ])

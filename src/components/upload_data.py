@@ -43,7 +43,7 @@ def render(app: Dash) -> html.Div:
                     columns=[{'name': i, 'id': i} for i in df.columns],
                     style_table=asdict(TableStyle()),
                     style_data=asdict(DataStyle()),
-                    style_cell=asdict(CellStyle()),
+                    style_cell=asdict(CellStyle(textAlign='center')),
                 ),
                 html.Hr(),
                 html.H6('Table info:'),
@@ -52,7 +52,7 @@ def render(app: Dash) -> html.Div:
                           zip(df.columns, [str(i) for i in df.dtypes])],
                     style_table=asdict(TableStyle(width='50%')),
                     style_data=asdict(DataStyle()),
-                    style_cell=asdict(CellStyle()),
+                    style_cell=asdict(CellStyle(textAlign='center')),
                 ),
                 dbc.Button(
                     id=ids.PROCEED_BUTTON,

@@ -98,11 +98,27 @@ def create_layout(app: Dash) -> html.Div:
                         split_ratio: float) -> html.Div:
         try:
             if n > 0:
+                y_data = pd.read_parquet('data/data.parquet', columns=[y])
+                if model == 'Classification':
+                    model_type = 'Binary' if len(y_data.value_counts()) == 2 else 'Multi-Class'
+                else:
+                    model_type = ''
+                title = html.Div(
+                    className='app-div',
+                    children=[
+                        html.H3(f'{model_type} {model} model'),
+                        html.Div(children=[f'{y} ~ f({", ".join(x)})']),
+                        html.Hr()
+                    ])
                 data = pd.DataFrame(rows).loc[cols, 'Column'].tolist()
                 if model == 'Classification':
-                    return da_classification.render(app, data, x, y, metrics, split_ratio)
+                    return html.Div([
+                        title,
+                        da_classification.render(app, data, x, y, metrics, split_ratio)])
                 else:
-                    return da_continuous.render(app, data, x, y, split_ratio)
+                    return html.Div([
+                        title,
+                        da_continuous.render(app, data, x, y, split_ratio)])
             else:
                 raise PreventUpdate
         except TypeError:

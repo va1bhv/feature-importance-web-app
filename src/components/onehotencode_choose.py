@@ -26,9 +26,13 @@ def render(app, x: list[str], y: str, model: str) -> html.Div:
                       zip(x, [str(i) for i in df[x].dtypes])],
                 style_table=asdict(TableStyle(width='95%')),
                 style_data=asdict(DataStyle()),
-                style_cell=asdict(CellStyle()),
+                style_cell=asdict(CellStyle(textAlign='center')),
                 row_selectable='multi',
-                selected_rows=[i for i in range(len(x)) if df[x].iloc[:, i].dtypes == 'object']
+                selected_rows=[i for i in range(len(x)) if df[x].iloc[:, i].dtypes == 'object'],
+                style_cell_conditional=[
+                    {'if': {'column_id': 'dtype'},
+                     'width': '30%'},
+                ]
             )
         ]
     )

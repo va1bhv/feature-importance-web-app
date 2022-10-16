@@ -12,6 +12,7 @@ class DataStyle:
     whiteSpace: str = 'normal'
     lineHeight: str = '15px'
     textAlign: str = 'left'
+    width: str = 'auto'
 
 
 @dataclass
@@ -19,6 +20,8 @@ class CellStyle:
     overflow: str = 'hidden'
     textOverFlow: str = 'ellipsis'
     minWidth: str = '0px'
+    textAlign: str = 'auto'
+    width: str = 'auto'
 
 
 @dataclass

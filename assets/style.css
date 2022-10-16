@@ -61,6 +61,10 @@ hr {
 .app-div {
     padding: 10px;
 }
+.app-table-div {
+    padding: 10px;
+    align: center;
+}
 
 .data-table-div {
     margin: auto;
