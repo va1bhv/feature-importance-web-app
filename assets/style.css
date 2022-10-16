@@ -1,0 +1,139 @@
+hr {
+    border-top: 2px solid gray;
+}
+
+.radio-items {
+    margin: 5px 1;
+}
+
+.y-dropdown {
+    float: left;
+    margin: auto;
+    width: 25%;
+    vertical-align: top;
+}
+
+.x-dropdown {
+    float: right;
+    margin: auto;
+    width: 75%;
+    vertical-align: top;
+}
+
+.left {
+    float: left;
+    margin: auto;
+    width: 40%;
+}
+
+.right {
+    float: right;
+    margin: auto;
+    width: 40%;
+}
+.left-title {
+    width: 40%;
+    float: left;
+    margin: auto;
+}
+
+.right-title {
+    width: 60%;
+    float: right;
+    margin: auto;
+    padding-right: 20px;
+}
+
+.button {
+    width: 100px;
+    margin-top: 25px;
+}
+.big-button {
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 72px;
+}
+
+.tabs-group {
+    padding-top: 20px;
+}
+
+.app-div {
+    padding: 10px;
+}
+
+.data-table-div {
+    margin: auto;
+    padding: 10px;
+}
+
+.budget-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.budget-text {
+    font-size: 20px;
+}
+
+.budget-text-value {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.budget-progress-bar {
+    height: 20px;
+}
+
+.budget-tooltip {
+    font-size: 18px;
+}
+
+@media(max-width: 800px) {
+    .dropdown-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.upload-data {
+    width: 75%;
+    height: 60px;
+    line-height: 60px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px;
+}
+.upload-data-title {
+    line-height: 60px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px;
+}
+
+.uploaded-table {
+    width: 75%;
+    margin: 10px;
+}
+.a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    text-decoration: none;
+  }
+
+.error {
+    margin: 5px;
+	color: red;
+}
+
+.upload-container {
+    padding: 5px;
+}
+
+.title {
+    height: 50px;
+}
