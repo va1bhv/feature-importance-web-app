@@ -7,7 +7,7 @@ def main() -> None:
     app = Dash(external_stylesheets=[BOOTSTRAP], suppress_callback_exceptions=True, prevent_initial_callbacks=True)
     app.title = 'Feature Importances'
     app.layout = create_layout(app)
-    app.run(debug=True,)
+    app.run(debug=False,)
 
 
 if __name__ == '__main__':

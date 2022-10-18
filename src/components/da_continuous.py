@@ -54,7 +54,6 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, sp
             ],
                 align='center'
             ),
-            html.Div(className='app-div', children=['Hello Coef'])
         ]
     )
 
