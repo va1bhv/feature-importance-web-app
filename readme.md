@@ -2,6 +2,8 @@
 ---
 ### Overview
 This app is made to rank variables based on their importance to a predictive model (Logistic Regression and Decision Tree for classification type and Linear Regression for a continuous model). Metrics used for the ranking are Gini Index (for Decision Tree Model), absolute Impact to Final Odds (for Logistic Regression Model) and regression coefficient (for Linear Regression Model). The app uses Dash for the frontend, scikit learn to calculate the importance values. Pandas is used to analyse and operate on the data uploaded by the user. Plotly Express is used to generate the graphs in the UI. Bootstrap is used for styling the app.
+  
+[Link to the deployed app.](https://initial-app-psjtjg5qoq-as.a.run.app/)
 
 ---
 ### About the app
