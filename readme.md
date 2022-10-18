@@ -11,6 +11,7 @@ This app is made to rank variables based on their importance to a predictive mod
 *   Slows down for large datasets.
 *   Do not upload sensitive data for the site hosted. In order to process sensitive data using this app, follow these steps:
     *   Clone this repository or download the zip and extract it in a suitable location.
+    *   Add an empty folder `Data` in root of the git.
     *   Install dependencies from the `requirements.txt` file.
     *   Run `main.py` from your local python console, making sure that the working directory is the root of this repository.
 *   For categorical targets, only binary classification models work.
