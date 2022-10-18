@@ -52,9 +52,11 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
                                                     target_names=encoder.inverse_transform([0, 1])))
     odds_cr_df = odds_cr_df.drop(columns=['accuracy', 'macro avg']).reset_index().rename(columns={'index': 'Metrics'})
 
-    odds_cr_df['Metrics'] = odds_cr_df['Metrics'].apply(lambda n: int(n) if type(n) != str else n)
-    gini_cr_df['Metrics'] = gini_cr_df['Metrics'].apply(lambda n: int(n) if type(n) != str else n)
-    print(odds_cr_df.to_dict('records'))
+    gini_cr_df.columns = [str(i) for i in gini_cr_df.columns]
+    odds_cr_df.columns = [str(i) for i in odds_cr_df.columns]
+
+    gini_cr_df.iloc[3, 1:] = gini_cr_df.iloc[3, 1:].astype(int).astype(str)
+    odds_cr_df.iloc[3, 1:] = odds_cr_df.iloc[3, 1:].astype(int).astype(str)
 
     gini_accuracy_train = accuracy_score(y_train, gini_train_y_pred)
     gini_accuracy_test = accuracy_score(y_test, gini_test_y_pred)
@@ -70,6 +72,7 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
                               columns=encoder.inverse_transform(range(encoder.classes_.shape[0]))).reset_index().rename(
         columns={'index': 'Actual/Predicted'})
     percentage = dash_table.FormatTemplate.percentage(2)
+    integer = dash_table.Format.Format(precision=2, scheme=dash_table.Format.Scheme.decimal_integer)
 
     odds = 1 - np.exp(logit.coef_[0])
     gini = tree.feature_importances_
@@ -137,7 +140,7 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
                 {'if': {'column_id': 'Actual/Predicted'},
                  'textAlign': 'center'},
                 {'if': {'column_id': 'Actual/Predicted'},
-                 'backgroundColor': 'light grey'},
+                 'backgroundColor': '#FAFAFA'},
             ]
         )
     ])
@@ -158,7 +161,7 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
                 {'if': {'column_id': 'Actual/Predicted'},
                  'textAlign': 'center'},
                 {'if': {'column_id': 'Actual/Predicted'},
-                 'backgroundColor': 'light grey'},
+                 'backgroundColor': '#FAFAFA'},
             ]
         )
     ])
@@ -179,10 +182,10 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
             style_data=asdict(DataStyle(textAlign='center')),
             style_cell=asdict(CellStyle(textAlign='center')),
             style_data_conditional=[
-                {'if': {'column_id': 'Actual/Predicted'},
-                 'textAlign': 'center'},
-                {'if': {'column_id': 'Actual/Predicted'},
-                 'backgroundColor': 'light grey'},
+                # {'if': {'filter_query': '{Metrics} = support'},
+                #  'format': integer},
+                {'if': {'column_id': 'Metrics'},
+                 'backgroundColor': '#FAFAFA'},
             ]
         )
     ])
@@ -202,10 +205,10 @@ def render(app: Dash, x_to_encode: list[str], x_vars: list[str], y_vars: str, me
             style_data=asdict(DataStyle(textAlign='center')),
             style_cell=asdict(CellStyle(textAlign='center')),
             style_data_conditional=[
-                {'if': {'column_id': 'Actual/Predicted'},
-                 'textAlign': 'center'},
-                {'if': {'column_id': 'Actual/Predicted'},
-                 'backgroundColor': 'light grey'},
+                # {'if': {'filter_query': '{Metrics} = support'},
+                #  'format': integer},
+                {'if': {'column_id': 'Metrics'},
+                 'backgroundColor': '#FAFAFA'},
             ]
         )
     ])
